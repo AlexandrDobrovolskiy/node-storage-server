@@ -20,7 +20,8 @@ var uploading = upload.fields([{ name: 'news', maxCount: 10 }]);
 
 
 router.post('/upload', uploading, function(req, res) {
-    console.log(req.files);
+    console.log(req);
+    res.add({'Access-Control-Allow-Origin': '*'});
     res.send(JSON.stringify({
         name: req.files.news[0].filename
     }));
