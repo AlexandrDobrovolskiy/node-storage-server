@@ -24,9 +24,8 @@ router.post('/upload', uploading, function(req, res) {
     res.set("Access-Control-Allow-Headers", "Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time");
     res.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     res.set("Access-Control-Allow-Origin", "*");
-    
-    var names = req.files.news.map(file => {name: file.filemane});
-    res.json(names);
+    var names = req.files.news.map(file => ({name: file.filename}));
+    res.send(JSON.stringify(names));
 });
 
 module.exports = router;
